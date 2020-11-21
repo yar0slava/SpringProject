@@ -19,14 +19,20 @@ public class DemoApplication {
 
 	@Bean
 	public CommandLineRunner demo(UserRepository repository){
-//		UserEntity userEntity = new UserEntity();
-//		userEntity.setLastName("Kupchik");
-//		userEntity.setFirstName("Daryna");
-//		userEntity.setGender(Gender.FEMALE);
-//		userEntity.setAge(20);
-//		repository.save(userEntity);
-		repository.findAll(PageRequest.of(0,10, Sort.Direction.DESC, "age"));
-		return (args -> repository.findById(1L).ifPresent(System.out::println));
+		UserEntity userEntity = new UserEntity();
+		userEntity.setLastName("Kupchik");
+		userEntity.setFirstName("Alina");
+		userEntity.setGender(Gender.FEMALE);
+		userEntity.setAge(21);
+		userEntity.setEmail("Kupchik.Alina@ukma.edu.ua");
+		repository.save(userEntity);
+
+//		System.err.println(repository.findByEmail("Kupchik.Daryna@ukma.edu.ua"));
+//		System.err.println(repository.existsByEmail("Kupchik.Daryna@ukma.edu.ua"));
+//		System.err.println(repository.findByFirstNameAndLastName("Daryna","Kupchik"));
+		return (args -> {
+			System.err.println(repository.existsByEmail("Kupchik.Daryna@ukma.edu.ua"));
+		});
 	}
 
 }

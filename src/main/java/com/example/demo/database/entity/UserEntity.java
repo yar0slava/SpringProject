@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "demo_user")
 public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -28,8 +30,12 @@ public class UserEntity {
     @Column(name = "age")
     private Integer age;
 
-    @Column(name = "email")
+    @Column(name = "email", unique=true)
     private String email;
 
+    @OneToOne
+    private HospitalEntity hospital;
 
+    @OneToMany
+    private List<BankAccountEntity> bankAccount;
 }
