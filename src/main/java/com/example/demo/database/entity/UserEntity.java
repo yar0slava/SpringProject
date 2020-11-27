@@ -33,7 +33,7 @@ public class UserEntity {
     @Column(name = "email", unique=true)
     private String email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private HospitalEntity hospital;
 
     @OneToMany
