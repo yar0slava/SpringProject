@@ -36,4 +36,8 @@ public class UserService {
         Optional<User> user = userRepository.findById(id).map(userMapper::toModel);
         return user.orElseThrow(() -> new NotFoundException(String.format("User not found with id %s",id)));
     }
+
+//    public void addUser(User user){
+//        userRepository.save(user);
+//    }
 }

@@ -1,11 +1,13 @@
 package com.example.demo.core.application.controller.api;
 
+import com.example.demo.core.application.dto.AddUserRequestDto;
 import com.example.demo.core.application.dto.UserDto;
 import com.example.demo.core.application.facade.UserFacade;
 import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,4 +31,12 @@ public class UserController {
     public UserDto getUser(@PathVariable("id") Long userId) throws NotFoundException {
         return userFacade.getUser(userId);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserDto getUser(@RequestBody @Valid AddUserRequestDto userDto) {
+//        return userFacade.addUser(userDto);
+        return new UserDto();
+    }
+
 }

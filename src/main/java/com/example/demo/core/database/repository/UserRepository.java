@@ -14,6 +14,9 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity,Lo
 
     Page<UserEntity> findAll(Pageable pageable);
 
+//    @Override
+//    Optional<UserEntity> save(UserEntity userEntity);
+
     boolean existsByEmail(String email);
 
     Optional<UserEntity> findByEmail(String email);

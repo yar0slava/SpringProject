@@ -1,5 +1,6 @@
 package com.example.demo.core.application.facade;
 
+import com.example.demo.core.application.dto.AddUserRequestDto;
 import com.example.demo.core.application.dto.UserDto;
 import com.example.demo.core.domain.model.User;
 import com.example.demo.core.domain.service.UserService;
@@ -30,4 +31,8 @@ public class UserFacade {
         User user = userService.getUser(id);
         return userMapper.toDto(user);
     }
+
+//    public void addUser(AddUserRequestDto userDto) {
+//        userService.addUser(userDto);
+//    }
 }

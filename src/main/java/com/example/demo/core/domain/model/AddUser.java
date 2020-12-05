@@ -1,0 +1,16 @@
+package com.example.demo.core.domain.model;
+
+import com.example.demo.core.database.entity.Gender;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class AddUser {
+
+    private Gender gender;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    private String email;
+}
