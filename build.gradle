@@ -13,19 +13,19 @@ repositories {
 }
 
 dependencies {
-	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
-
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compile group: 'org.modelmapper.extensions', name: 'modelmapper-spring', version: '1.1.0'
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.3.2.RELEASE'
-
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.3.2.RELEASE'
+	compile group: 'org.modelmapper.extensions', name: 'modelmapper-spring', version: '1.1.0'
+	implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	implementation "io.springfox:springfox-swagger2:2.9.2"
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.3.2.RELEASE'
+	implementation "org.springframework.cloud:spring-cloud-starter-openfeign:2.2.4.RELEASE"
+
 
 	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
-
-//	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

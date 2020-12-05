@@ -2,6 +2,7 @@ package com.example.demo.core.application.facade;
 
 import com.example.demo.core.application.dto.AddUserDto;
 import com.example.demo.core.application.dto.PageDto;
+import com.example.demo.core.application.dto.AddUserRequestDto;
 import com.example.demo.core.application.dto.UserDto;
 import com.example.demo.core.domain.model.User;
 import com.example.demo.core.domain.service.UserService;
@@ -60,4 +61,8 @@ public class UserFacade {
     public void deleteUser(Long userId) {
         userService.deleteUser(userId);
     }
+
+//    public void addUser(AddUserRequestDto userDto) {
+//        userService.addUser(userDto);
+//    }
 }

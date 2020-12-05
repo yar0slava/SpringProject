@@ -22,4 +22,5 @@ public class AddUserMapper {
     public UserEntity toEntity(AddUser user){
         return mapper.map(user, UserEntity.class);
     }
+
 }
