@@ -10,14 +10,15 @@ import java.util.List;
 
 @Getter
 @Setter
-public class UserDto {
+public class AddUserDto {
 
-    private long id;
     private Gender gender;
     private String firstName;
     private String lastName;
     private Integer age;
     private String email;
+    private String password;
+
     private Hospital hospital;
     private List<BankAccount> bankAccount;
 }
