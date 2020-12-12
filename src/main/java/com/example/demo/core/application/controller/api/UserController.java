@@ -30,6 +30,12 @@ public class UserController {
         return userFacade.getAll(page, size);
     }
 
+    @GetMapping("/client")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto> getAllFromApiClient(){
+        return userFacade.getAllFromApiClient();
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUser(@PathVariable("id") Long userId) throws NotFoundException {
