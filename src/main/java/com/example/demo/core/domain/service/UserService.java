@@ -13,6 +13,9 @@ import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final SomeClient someClient;
     private final UserRepository userRepository;
@@ -103,4 +106,10 @@ public class UserService {
 //    public void addUser(User user){
 //        userRepository.save(user);
 //    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserEntity userEntity = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(""));
+        return userMapper.toModel(userEntity);
+    }
 }
