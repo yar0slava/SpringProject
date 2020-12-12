@@ -78,4 +78,8 @@ public class UserService {
         UserEntity updateUser = userRepository.save(updateUserMapper.toEntity(user));
         return userMapper.toModel(updateUser);
     }
+
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
+    }
 }

@@ -21,15 +21,9 @@ public class UserController {
         this.userFacade = userFacade;
     }
 
-//    @GetMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<UserDto> getAll(){
-//        return userFacade.getAll();
-//    }
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public PageDto<UserDto> getPaged(@RequestParam(value = "from", required = false, defaultValue = "0") int from,
+    public PageDto<UserDto> getAll(@RequestParam(value = "from", required = false, defaultValue = "0") int from,
                                      @RequestParam(value = "size", required = false, defaultValue = "10") int size){
         return userFacade.getAll(from, size);
     }
@@ -50,6 +44,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserDto updateUser(@RequestBody UserDto userDto){
         return userFacade.updateUser(userDto);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteUser(@PathVariable("id") Long userId) {
+        userFacade.deleteUser(userId);
     }
 
     @GetMapping("/group")

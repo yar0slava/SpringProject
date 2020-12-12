@@ -36,12 +36,6 @@ public class UserFacade {
         return new PageDto<UserDto>(users.size(), users);
     }
 
-//    public List<UserDto> getAll(){
-//        return userService.getAll().stream()
-//                .map(userMapper::toDto)
-//                .collect(Collectors.toList());
-//    }
-
     public UserDto getUser(Long id) throws NotFoundException {
         User user = userService.getUser(id);
         return userMapper.toDto(user);
@@ -61,5 +55,9 @@ public class UserFacade {
     public UserDto updateUser(UserDto userDto) {
         User user = userService.updateUser(updateUserMapper.toModel(userDto));
         return userMapper.toDto(user);
+    }
+
+    public void deleteUser(Long userId) {
+        userService.deleteUser(userId);
     }
 }

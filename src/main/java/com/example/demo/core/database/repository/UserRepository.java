@@ -8,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface UserRepository extends PagingAndSortingRepository<UserEntity,Long> {
 
-    UserEntity save(UserEntity userEntity);
-
     Iterable<UserEntity> findAll();
 
     Page<UserEntity> findAll(Pageable pageable);
