@@ -15,6 +15,10 @@ repositories {
 dependencies {
 	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
 
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'org.modelmapper.extensions', name: 'modelmapper-spring', version: '1.1.0'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.3.2.RELEASE'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 

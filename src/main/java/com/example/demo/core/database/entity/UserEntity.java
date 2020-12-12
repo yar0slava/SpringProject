@@ -1,4 +1,4 @@
-package com.example.demo.database.entity;
+package com.example.demo.core.database.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,9 +33,9 @@ public class UserEntity {
     @Column(name = "email", unique=true)
     private String email;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne
     private HospitalEntity hospital;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<BankAccountEntity> bankAccount;
 }
