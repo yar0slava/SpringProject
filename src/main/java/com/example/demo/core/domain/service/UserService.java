@@ -1,15 +1,12 @@
 package com.example.demo.core.domain.service;
 
-import com.example.demo.core.application.dto.UserDto;
-import com.example.demo.core.database.entity.UserEntity;
+import com.example.demo.client.SomeClient;
 import com.example.demo.core.database.repository.UserRepository;
 import com.example.demo.core.domain.model.User;
 import com.example.demo.core.mapper.UserMapper;
 import javassist.NotFoundException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,10 +15,12 @@ import java.util.stream.StreamSupport;
 @Service
 public class UserService {
 
+    private final SomeClient someClient;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper){
+    public UserService(SomeClient someClient, UserRepository userRepository, UserMapper userMapper){
+        this.someClient = someClient;
         this.userMapper = userMapper;
         this.userRepository = userRepository;
     }
@@ -30,6 +29,10 @@ public class UserService {
         return StreamSupport.stream(userRepository.findAll().spliterator(), false)
                 .map(userMapper::toModel)
                 .collect(Collectors.toList());
+    }
+
+    public List<User> getAllFromApiClient(){
+        return someClient.getAllUsersFromApiClient();
     }
 
     public User getUser(Long id) throws NotFoundException {

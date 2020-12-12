@@ -32,6 +32,12 @@ public class UserFacade {
         return userMapper.toDto(user);
     }
 
+    public List<UserDto> getAllFromApiClient() {
+        return userService.getAllFromApiClient().stream()
+                .map(userMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 //    public void addUser(AddUserRequestDto userDto) {
 //        userService.addUser(userDto);
 //    }
