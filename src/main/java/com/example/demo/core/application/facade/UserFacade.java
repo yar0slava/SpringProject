@@ -29,8 +29,8 @@ public class UserFacade {
         this.updateUserMapper = updateUserMapper;
     }
 
-    public PageDto<UserDto> getAll(Integer from, Integer size){
-        List<UserDto> users = userService.getAll(from, size).getElements().stream()
+    public PageDto<UserDto> getAll(Integer page, Integer size){
+        List<UserDto> users = userService.getAll(page, size).getElements().stream()
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
         return new PageDto<UserDto>(users.size(), users);

@@ -23,9 +23,9 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public PageDto<UserDto> getAll(@RequestParam(value = "from", required = false, defaultValue = "0") int from,
+    public PageDto<UserDto> getAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
                                      @RequestParam(value = "size", required = false, defaultValue = "10") int size){
-        return userFacade.getAll(from, size);
+        return userFacade.getAll(page, size);
     }
 
     @GetMapping("/{id}")
