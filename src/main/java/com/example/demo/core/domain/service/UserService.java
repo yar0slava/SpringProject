@@ -40,15 +40,15 @@ public class UserService {
 //                .collect(Collectors.toList());
 //    }
 
-    public PageDto<User> getAll(Integer from, Integer size){
-        PageDto<User> page = new PageDto<>();
-        List<User> users = StreamSupport.stream(userRepository.findAll(PageRequest.of(from, size)).spliterator(), false)
+    public PageDto<User> getAll(Integer page, Integer size){
+        PageDto<User> pageDto = new PageDto<>();
+        List<User> users = StreamSupport.stream(userRepository.findAll(PageRequest.of(page, size)).spliterator(), false)
                 .map(userMapper::toModel)
                 .collect(Collectors.toList());
-        page.setElements(users);
-        page.setSize(users.size());
+        pageDto.setElements(users);
+        pageDto.setSize(users.size());
 
-        return page;
+        return pageDto;
     }
 
     public List<User> getUsersGrouped(String field, String order) throws BadHttpRequest {
