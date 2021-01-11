@@ -10,4 +10,5 @@ public class HospitalEntity {
 
     @Id
     private long id;
+    private String name;
 }

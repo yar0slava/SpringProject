@@ -7,9 +7,9 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
+
 public interface UserRepository extends PagingAndSortingRepository<UserEntity,Long> {
 
-    @Override
     Iterable<UserEntity> findAll();
 
     Page<UserEntity> findAll(Pageable pageable);
@@ -17,8 +17,5 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity,Lo
     boolean existsByEmail(String email);
 
     Optional<UserEntity> findByEmail(String email);
-
-    Optional<UserEntity> findByFirstNameAndLastName(String firstName, String lastName);
-
 
 }

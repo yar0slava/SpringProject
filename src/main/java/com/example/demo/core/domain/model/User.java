@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -55,4 +56,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    private Hospital hospital;
+    private List<BankAccount> bankAccount;
 }
