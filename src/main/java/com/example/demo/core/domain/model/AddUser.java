@@ -1,5 +1,6 @@
 package com.example.demo.core.domain.model;
 
+import com.example.demo.core.database.entity.Authority;
 import com.example.demo.core.database.entity.Gender;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,7 @@ public class AddUser {
     private Integer age;
     private String email;
     private String password;
-
+    private Authority authority;
     private Hospital hospital;
     private List<BankAccount> bankAccount;
 }

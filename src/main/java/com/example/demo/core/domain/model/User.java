@@ -1,5 +1,6 @@
 package com.example.demo.core.domain.model;
 
+import com.example.demo.core.database.entity.Authority;
 import com.example.demo.core.database.entity.Gender;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,10 +22,13 @@ public class User implements UserDetails {
     private Integer age;
     private String email;
     private String password;
+    private Authority authority;
+    private Hospital hospital;
+    private List<BankAccount> bankAccount;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) () -> "USER");
+        return Collections.singleton((GrantedAuthority) () -> authority.name());
     }
 
     @Override
@@ -56,7 +60,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    private Hospital hospital;
-    private List<BankAccount> bankAccount;
 }

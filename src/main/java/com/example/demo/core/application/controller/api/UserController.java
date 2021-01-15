@@ -47,25 +47,11 @@ public class UserController {
         return userFacade.getUser(userId);
     }
 
-    @ApiOperation(value = "Operation of adding User", httpMethod = "POST", responseReference = "UserDto", code = 201)
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserDto addUser(@RequestBody @Valid AddUserDto userDto){
-        return userFacade.addUser(userDto);
-    }
-
     @ApiOperation(value = "Operation of updating User", httpMethod = "PUT", responseReference = "UserDto")
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public UserDto updateUser(@RequestBody @Valid UserDto userDto){
         return userFacade.updateUser(userDto);
-    }
-
-    @ApiOperation(value = "Operation of deleting User", httpMethod = "DELETE")
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void deleteUser(@PathVariable("id") Long userId) {
-        userFacade.deleteUser(userId);
     }
 
     @ApiOperation(value = "Operation of getting Users grouped by properties", httpMethod = "GET", responseReference = "UserDto", responseContainer = "List")

@@ -1,6 +1,7 @@
 package com.example.demo.core.application.dto;
 
 import com.example.demo.core.application.validator.UserAgeConstraint;
+import com.example.demo.core.database.entity.Authority;
 import com.example.demo.core.database.entity.Gender;
 import com.example.demo.core.domain.model.BankAccount;
 import com.example.demo.core.domain.model.Hospital;
@@ -41,13 +42,15 @@ public class UserDto {
     @Pattern(regexp = "@gmail.com$")
     private String email;
 
-    @ApiModelProperty(value = "User password", example = "ivanova123")
-    @Pattern(regexp = "\t^(?=.*[8-9]+.+)(?=.*[a-zA-Z]+.*)[a8-9-zA-Z]{6,}$")
-    private String password;
+    @ApiModelProperty(value = "User authority", example = "USER/ADMIN", required = true)
+    @NotNull
+    private Authority authority;
 
     @ApiModelProperty(value = "Hospital user attends", example = "id = 1, name = 'hospital 1' ")
+    @NotNull
     private Hospital hospital;
 
     @ApiModelProperty(value = "User bank accounts", example = "id = 1, name = 'bank 1' balance = '123'")
+    @NotNull
     private List<BankAccount> bankAccount;
 }

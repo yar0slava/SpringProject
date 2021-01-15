@@ -33,9 +33,16 @@ public class UserEntity {
     @Column(name = "email", unique=true)
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "authority")
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     @OneToOne
     private HospitalEntity hospital;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<BankAccountEntity> bankAccount;
 }
