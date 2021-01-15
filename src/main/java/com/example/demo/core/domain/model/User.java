@@ -1,14 +1,15 @@
 package com.example.demo.core.domain.model;
 
+import com.example.demo.core.database.entity.Authority;
 import com.example.demo.core.database.entity.Gender;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,10 +24,11 @@ public class User implements UserDetails {
     private Hospital hospital;
     private List<BankAccount> bankAccount;
     private String password;
+    private Authority authority;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) () -> "USER");
+        return Collections.singleton((GrantedAuthority) () -> authority.name());
     }
 
     @Override
