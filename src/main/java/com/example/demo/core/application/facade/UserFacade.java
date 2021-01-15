@@ -2,7 +2,6 @@ package com.example.demo.core.application.facade;
 
 import com.example.demo.core.application.dto.AddUserDto;
 import com.example.demo.core.application.dto.PageDto;
-import com.example.demo.core.application.dto.AddUserRequestDto;
 import com.example.demo.core.application.dto.UserDto;
 import com.example.demo.core.domain.model.User;
 import com.example.demo.core.domain.service.UserService;
