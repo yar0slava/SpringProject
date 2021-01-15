@@ -3,6 +3,8 @@ package com.example.demo.core.application.controller.api;
 import com.example.demo.config.util.JwtUtil;
 import com.example.demo.core.application.dto.LoginRequestDto;
 import com.example.demo.core.application.dto.LoginResponseDto;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/login")
+@Api(value = "Login operations in the system", tags = "Operations performed to login into the System", protocols = "https")
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -29,6 +32,7 @@ public class LoginController {
         this.userDetailsService = userDetailsService;
     }
 
+    @ApiOperation(value = "Operation of logging in", httpMethod = "POST", responseReference = "LoginResponseDto")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public LoginResponseDto login(@RequestBody LoginRequestDto loginRequestDto) throws  Exception{
         authenticate(loginRequestDto.getEmail(), loginRequestDto.getPassword());
