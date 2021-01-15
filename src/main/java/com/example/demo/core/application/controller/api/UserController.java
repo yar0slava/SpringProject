@@ -28,8 +28,8 @@ public class UserController {
     @ApiOperation(value = "Operation of getting all of the Users", httpMethod = "GET", responseReference = "UserDto", responseContainer = "PageDto")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public PageDto<UserDto> getAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-                                     @RequestParam(value = "size", required = false, defaultValue = "10") int size){
+    public PageDto<UserDto> getAll(@RequestParam(value = "page", required = false) int page,
+                                     @RequestParam(value = "size", required = false) int size){
         return userFacade.getAll(page, size);
     }
 
