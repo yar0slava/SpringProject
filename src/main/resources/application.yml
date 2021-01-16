@@ -19,10 +19,7 @@ spring:
 jwt:
   secret: mysecret
 
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        type:
-#          descriptor:
-#            sql: trace
+  client:
+    someapi:
+      url: http://localhost:6605
+

@@ -51,11 +51,11 @@ public class UserService implements UserDetailsService {
         PageDto<User> pageDto = new PageDto<>();
         List<User> users;
 
-        if(page == null && size == null){
-            users =  StreamSupport.stream(userRepository.findAll().spliterator(), false)
-                .map(userMapper::toModel)
-                .collect(Collectors.toList());
-        }else{
+        if (page == null && size == null) {
+            users = StreamSupport.stream(userRepository.findAll().spliterator(), false)
+                    .map(userMapper::toModel)
+                    .collect(Collectors.toList());
+        } else {
             users = StreamSupport.stream(userRepository.findAll(PageRequest.of(page != null ? page : 0, size != null ? size : 10)).spliterator(), false)
                     .map(userMapper::toModel)
                     .collect(Collectors.toList());
