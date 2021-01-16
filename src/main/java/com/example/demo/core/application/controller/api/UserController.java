@@ -1,6 +1,5 @@
 package com.example.demo.core.application.controller.api;
 
-import com.example.demo.core.application.dto.AddUserDto;
 import com.example.demo.core.application.dto.PageDto;
 import com.example.demo.core.application.dto.UserDto;
 import com.example.demo.core.application.facade.UserFacade;
@@ -28,8 +27,8 @@ public class UserController {
     @ApiOperation(value = "Operation of getting all of the Users", httpMethod = "GET", responseReference = "UserDto", responseContainer = "PageDto")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public PageDto<UserDto> getAll(@RequestParam(value = "page", required = false) int page,
-                                     @RequestParam(value = "size", required = false) int size){
+    public PageDto<UserDto> getAll(@RequestParam(value = "page", required = false) Integer page,
+                                     @RequestParam(value = "size", required = false) Integer size){
         return userFacade.getAll(page, size);
     }
 

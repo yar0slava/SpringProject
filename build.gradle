@@ -31,6 +31,8 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testImplementation "org.springframework.cloud:spring-cloud-contract-wiremock:2.2.4.RELEASE"
+	testImplementation "org.springframework.security:spring-security-test"
 }
 
 test {
