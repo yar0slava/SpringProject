@@ -19,7 +19,7 @@ spring:
 jwt:
   secret: mysecret
 
-  client:
-    someapi:
-      url: http://localhost:6605
+client:
+  someapi:
+    url: http://localhost:6605
 
