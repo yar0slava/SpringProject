@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 public class ApiError {
 
     @ApiModelProperty(value = "Error timestamp", example = "2020-02-22 06:55:56", required = true)
-    LocalDateTime timestamp;
+    private LocalDateTime timestamp;
 
     @ApiModelProperty(value = "Error message", example = "Wrong email", required = true)
-    String message;
+    private String message;
 }

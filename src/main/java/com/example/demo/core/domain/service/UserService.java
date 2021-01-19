@@ -40,12 +40,6 @@ public class UserService implements UserDetailsService {
         this.updateUserMapper = updateUserMapper;
     }
 
-//    public List<User> getAll(){
-//        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
-//                .map(userMapper::toModel)
-//                .collect(Collectors.toList());
-//    }
-
     public PageDto<User> getAll(Integer page, Integer size){
 
         PageDto<User> pageDto = new PageDto<>();
@@ -103,9 +97,6 @@ public class UserService implements UserDetailsService {
         userRepository.deleteById(userId);
     }
 
-//    public void addUser(User user){
-//        userRepository.save(user);
-//    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByEmail(email)
