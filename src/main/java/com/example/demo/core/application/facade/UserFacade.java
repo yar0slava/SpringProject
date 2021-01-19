@@ -66,8 +66,4 @@ public class UserFacade {
     public void deleteUser(Long userId) {
         userService.deleteUser(userId);
     }
-
-//    public void addUser(AddUserRequestDto userDto) {
-//        userService.addUser(userDto);
-//    }
 }
