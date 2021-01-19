@@ -2,6 +2,7 @@ package com.example.demo.core.domain.service;
 
 import com.example.demo.core.application.dto.PageDto;
 import com.example.demo.core.database.entity.UserEntity;
+import com.example.demo.client.SomeClient;
 import com.example.demo.core.database.repository.UserRepository;
 import com.example.demo.core.domain.model.AddUser;
 import com.example.demo.core.domain.model.User;
@@ -22,12 +23,14 @@ import java.util.stream.StreamSupport;
 @Service
 public class UserService {
 
+    private final SomeClient someClient;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final AddUserMapper addUserMapper;
     private final UpdateUserMapper updateUserMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, AddUserMapper addUserMapper, UpdateUserMapper updateUserMapper){
+    public UserService(SomeClient someClient, UserRepository userRepository, UserMapper userMapper, AddUserMapper addUserMapper, UpdateUserMapper updateUserMapper){
+        this.someClient = someClient;
         this.userMapper = userMapper;
         this.userRepository = userRepository;
         this.addUserMapper = addUserMapper;
@@ -41,10 +44,20 @@ public class UserService {
 //    }
 
     public PageDto<User> getAll(Integer page, Integer size){
+
         PageDto<User> pageDto = new PageDto<>();
-        List<User> users = StreamSupport.stream(userRepository.findAll(PageRequest.of(page, size)).spliterator(), false)
+        List<User> users;
+
+        if(page == null && size == null){
+            users =  StreamSupport.stream(userRepository.findAll().spliterator(), false)
                 .map(userMapper::toModel)
                 .collect(Collectors.toList());
+        }else{
+            users = StreamSupport.stream(userRepository.findAll(PageRequest.of(page != null ? page : 0, size != null ? size : 10)).spliterator(), false)
+                    .map(userMapper::toModel)
+                    .collect(Collectors.toList());
+        }
+
         pageDto.setElements(users);
         pageDto.setSize(users.size());
 
@@ -62,6 +75,10 @@ public class UserService {
                     .collect(Collectors.toList());
         }
         throw new BadHttpRequest();
+    }
+
+    public List<User> getAllFromApiClient(){
+        return someClient.getAllUsersFromApiClient();
     }
 
     public User getUser(Long id) throws NotFoundException {
@@ -82,4 +99,8 @@ public class UserService {
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
+
+//    public void addUser(User user){
+//        userRepository.save(user);
+//    }
 }
