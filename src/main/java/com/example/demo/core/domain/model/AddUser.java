@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class AddUser {
     private Integer age;
     private String email;
     private String password;
-    private Authority authority;
+    private Set<Authority> authority;
     private Hospital hospital;
     private List<BankAccount> bankAccount;
 }

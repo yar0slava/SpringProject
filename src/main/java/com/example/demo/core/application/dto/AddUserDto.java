@@ -12,6 +12,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.*;
 import java.util.List;
+import java.util.Set;
 
 @ApiModel(value = "Add user request", description = "Request model for creating user")
 @Getter
@@ -46,9 +47,9 @@ public class AddUserDto {
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$")
     private String password;
 
-    @ApiModelProperty(value = "User authority", example = "USER/ADMIN", required = true)
+    @ApiModelProperty(value = "User authorities", example = "USER/ADMIN", required = true)
     @NotNull
-    private Authority authority;
+    private Set<Authority> authority;
 
     @ApiModelProperty(value = "Hospital user attends", example = "id = 1, name = 'hospital 1' ", required = true)
     @NotNull
