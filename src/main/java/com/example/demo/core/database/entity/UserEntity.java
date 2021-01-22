@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,12 +38,12 @@ public class UserEntity {
     private String password;
 
     @Column(name = "authority")
-    @Enumerated(EnumType.STRING)
-    private Authority authority;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Authority> authority;
 
     @OneToOne
     private HospitalEntity hospital;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<BankAccountEntity> bankAccount;
 }

@@ -8,8 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -24,11 +24,11 @@ public class User implements UserDetails {
     private Hospital hospital;
     private List<BankAccount> bankAccount;
     private String password;
-    private Authority authority;
+    private Set<Authority> authority;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) () -> authority.name());
+        return authority;
     }
 
     @Override

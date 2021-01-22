@@ -4,10 +4,8 @@ import com.example.demo.config.util.JwtUtil;
 import com.example.demo.core.application.dto.AddUserDto;
 import com.example.demo.core.application.dto.LoginRequestDto;
 import com.example.demo.core.application.dto.LoginResponseDto;
-import org.springframework.http.ResponseEntity;
 import com.example.demo.core.application.dto.UserDto;
 import com.example.demo.core.application.facade.UserFacade;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,10 +43,10 @@ public class LoginController {
         return new LoginResponseDto(token);
     }
 
-    @ApiOperation(value = "Operation of signing in", httpMethod = "POST", responseReference = "UserDto")
-    @RequestMapping(value = "/signin", method = RequestMethod.POST)
+    @ApiOperation(value = "Operation of signing up", httpMethod = "POST", responseReference = "UserDto")
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto signIn(@RequestBody @Valid AddUserDto userDto) {
+    public UserDto signUp(@RequestBody @Valid AddUserDto userDto) {
         return userFacade.addUser(userDto);
     }
 
