@@ -13,6 +13,9 @@ import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final SomeClient someClient;
     private final UserRepository userRepository;
@@ -37,22 +40,16 @@ public class UserService {
         this.updateUserMapper = updateUserMapper;
     }
 
-//    public List<User> getAll(){
-//        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
-//                .map(userMapper::toModel)
-//                .collect(Collectors.toList());
-//    }
-
     public PageDto<User> getAll(Integer page, Integer size){
 
         PageDto<User> pageDto = new PageDto<>();
         List<User> users;
 
-        if(page == null && size == null){
-            users =  StreamSupport.stream(userRepository.findAll().spliterator(), false)
-                .map(userMapper::toModel)
-                .collect(Collectors.toList());
-        }else{
+        if (page == null && size == null) {
+            users = StreamSupport.stream(userRepository.findAll().spliterator(), false)
+                    .map(userMapper::toModel)
+                    .collect(Collectors.toList());
+        } else {
             users = StreamSupport.stream(userRepository.findAll(PageRequest.of(page != null ? page : 0, size != null ? size : 10)).spliterator(), false)
                     .map(userMapper::toModel)
                     .collect(Collectors.toList());
@@ -100,7 +97,10 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-//    public void addUser(User user){
-//        userRepository.save(user);
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserEntity userEntity = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(""));
+        return userMapper.toModel(userEntity);
+    }
 }

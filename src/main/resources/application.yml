@@ -12,14 +12,14 @@ spring:
   #        generate_statistics: true
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/test_db
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        type:
-#          descriptor:
-#            sql: trace
+jwt:
+  secret: mysecret
+
+client:
+  someapi:
+    url: http://localhost:6605
+

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(name = "someapi", url = "192.168.1.64:8080/api")
+@FeignClient(name = "someapi", url = "${client.someapi.url}")
 public interface SomeClient {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
