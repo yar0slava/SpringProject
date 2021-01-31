@@ -67,7 +67,6 @@ class UserControllerTest {
     @Test
     void getUsersGrouped() throws Exception{
         MockHttpServletRequestBuilder builder = get("/api/users/group")
-//                .param("field","id")
                 .param("order","desc")
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -75,8 +74,6 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(7)));
-
-
     }
 
     @Test
@@ -107,8 +104,6 @@ class UserControllerTest {
         String requestJson=ow.writeValueAsString(user );
 
         MockHttpServletRequestBuilder builder = put("/api/users")
-//                .param("field","id")
-//                .param("order","desc")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson);
 
@@ -116,39 +111,16 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", equalTo(user)));
-
-
     }
-
-//    @Test
-//    public void testInsertObject() throws Exception {
-//        String url = BASE_URL + "/object";
-//        ObjectBean anObject = new ObjectBean();
-//        anObject.setObjectId("33");
-//        anObject.setUserId("4268321");
-//        //... more
-//        ObjectMapper mapper = new ObjectMapper();
-//        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-//        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-//        String requestJson=ow.writeValueAsString(anObject );
-//
-//        mockMvc.perform(post(url).contentType(APPLICATION_JSON_UTF8)
-//                .content(requestJson))
-//                .andExpect(status().isOk());
-//    }
 
     @Test
     void getUser() throws Exception{
         MockHttpServletRequestBuilder builder = get("/api/users/2")
-//                .param("field","id")
-//                .param("order","desc")
                 .contentType(MediaType.APPLICATION_JSON);
 
         mockMvc.perform(builder)
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", equalTo(2)));
-
-
     }
 }

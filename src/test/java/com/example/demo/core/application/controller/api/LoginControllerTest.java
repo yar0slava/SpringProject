@@ -52,7 +52,6 @@ class LoginControllerTest {
         String requestJson=ow.writeValueAsString(loginRequestDto);
 
         MockHttpServletRequestBuilder builder = post("/login/login")
-//                .param("field","id")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson);
 
@@ -60,8 +59,6 @@ class LoginControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.token", notNullValue()));
-
-
     }
 
     @Test
@@ -98,7 +95,5 @@ class LoginControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.email", equalTo("test1@gmail.com")));
-
     }
-
 }
