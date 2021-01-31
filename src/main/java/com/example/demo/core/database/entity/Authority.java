@@ -1,9 +1,11 @@
 package com.example.demo.core.database.entity;
 
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
+@Setter
 @Entity
 @Table(name = "authority")
 public class Authority implements GrantedAuthority {
