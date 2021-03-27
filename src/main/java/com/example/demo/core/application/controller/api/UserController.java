@@ -64,7 +64,7 @@ public class UserController {
                     @ApiImplicitParam(value = "order of the grouped list of users", name = "order", type = "String", defaultValue = "asc", allowableValues = "asc, desc")})
     @GetMapping("/group")
     @ResponseStatus(HttpStatus.OK)
-    public List<UserDto> getUsersGrouped(@RequestParam(value = "field", required = false, defaultValue = "name") String field,
+    public List<UserDto> getUsersGrouped(@RequestParam(value = "field", required = false, defaultValue = "id") String field,
                                          @RequestParam(value = "order", required = false, defaultValue = "asc") String order) throws BadHttpRequest {
         return userFacade.getUserGrouped(field, order);
     }

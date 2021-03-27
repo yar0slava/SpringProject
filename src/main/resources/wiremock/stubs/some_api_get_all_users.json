@@ -1,0 +1,154 @@
+{
+  "id": "2138908f-7abf-4e6a-9d41-a6c0ac6ac244",
+  "name": "some_api_get_all_users.json",
+  "request": {
+    "url": "/users",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+      {
+        "id": 2,
+        "gender": "FEMALE",
+        "firstName": "Alina",
+        "lastName": "Kupchik",
+        "age": 21,
+        "email": "Kupchik.Alina@ukma.edu.ua",
+        "authority": [],
+        "hospital": {
+          "id": 1,
+          "name": "first"
+        },
+        "bankAccount": [
+          {
+            "id": 21,
+            "name": null,
+            "balance": null
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "gender": "FEMALE",
+        "firstName": "Oleksandra",
+        "lastName": "Ivanento",
+        "age": 27,
+        "email": "oleksandra.iv@ukma.edu.ua",
+        "authority": [],
+        "hospital": {
+          "id": 2,
+          "name": "second"
+        },
+        "bankAccount": [
+          {
+            "id": 61,
+            "name": null,
+            "balance": null
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "gender": "MALE",
+        "firstName": "Sergiy",
+        "lastName": "Vakulenko",
+        "age": 18,
+        "email": "123@ukma.edu.ua",
+        "authority": [],
+        "hospital": {
+          "id": 2,
+          "name": "second"
+        },
+        "bankAccount": [
+          {
+            "id": 31,
+            "name": null,
+            "balance": null
+          },
+          {
+            "id": 32,
+            "name": null,
+            "balance": null
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "gender": "MALE",
+        "firstName": "Oleksandr",
+        "lastName": "Ivanento",
+        "age": 27,
+        "email": "oleksandr.ivanenko@ukma.edu.ua",
+        "authority": [],
+        "hospital": {
+          "id": 3,
+          "name": "third"
+        },
+        "bankAccount": [
+          {
+            "id": 51,
+            "name": null,
+            "balance": null
+          },
+          {
+            "id": 52,
+            "name": null,
+            "balance": null
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "gender": "FEMALE",
+        "firstName": "Daryna",
+        "lastName": "Kupchik",
+        "age": 20,
+        "email": "daryna@ukma.edu.ua",
+        "authority": [],
+        "hospital": {
+          "id": 3,
+          "name": "third"
+        },
+        "bankAccount": [
+          {
+            "id": 11,
+            "name": null,
+            "balance": null
+          },
+          {
+            "id": 12,
+            "name": null,
+            "balance": null
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "gender": "FEMALE",
+        "firstName": "Yaroslava",
+        "lastName": "Kurash",
+        "age": 20,
+        "email": "yaroslavakurash@gmail.com",
+        "authority": [],
+        "hospital": {
+          "id": 3,
+          "name": "third"
+        },
+        "bankAccount": [
+          {
+            "id": 71,
+            "name": null,
+            "balance": null
+          }
+        ]
+      }
+    ],
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  "uuid": "a0ed9a72-a6cd-4d68-b6d8-15c546a3fc78",
+  "priority": 99,
+  "insertionIndex": 37
+}

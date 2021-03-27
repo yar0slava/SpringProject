@@ -67,7 +67,7 @@ public class UserService implements UserDetailsService {
             case "asc": return StreamSupport.stream(userRepository.findAll(Sort.by(Sort.Order.asc(field))).spliterator(), false)
                     .map(userMapper::toModel)
                     .collect(Collectors.toList());
-            case "desc": return StreamSupport.stream(userRepository.findAll(Sort.by(Sort.Order.desc("age"))).spliterator(), false)
+            case "desc": return StreamSupport.stream(userRepository.findAll(Sort.by(Sort.Order.desc(field))).spliterator(), false)
                     .map(userMapper::toModel)
                     .collect(Collectors.toList());
         }
